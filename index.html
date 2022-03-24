@@ -21,6 +21,7 @@
 				<li><a class="scroll-link" data-target="intro" href="#intro">About</a></li>
 				<li><a class="scroll-link" data-target="faq" href="#faq">FAQ</a></li>
 				<li><a class="scroll-link" data-target="journey" href="#journey">Journey</a></li>
+				<li><a class="scroll-link" data-target="setup" href="#setup">Setup</a></li>
 				<li><a class="scroll-link" data-target="team" href="#team">Team</a></li>
 			</ul>
 		</div>
@@ -206,6 +207,46 @@
 					</div>
 				</div>
 			</div>
+		</div>
+	</section>
+	<section class="container-fluid bg-overlay-gradient" id="setup">
+		<div class="container">
+			<h1>Setup</h1>
+			<h2>Requirements - What you need</h2>
+			<p>To setup Judge Alexa we recommend the following things:</p>
+			<ul>
+				<li>Ubuntu 20.04</li>
+				<li>Python 3.8</li>
+				<li>NVIDIA GPU</li>
+				<li>Make sure that you can run <a href="https://github.com/CorentinJ/Real-Time-Voice-Cloning"> Real Time Voice Cloning ToolBox</a>. 
+				Just follow the instructions there and install the requirements globally. 
+				</li>
+			  </ul>
+			  <h2>Instructions</h2>
+			  <p>Next up follow these steps</p>
+			<ol>
+				<li>First go to <a href="https://github.com/speydril/mycroft-core">https://github.com/speydril/mycroft-core</a> and clone the repository</li>
+				<li>Run the dev_setup.sh and make sure you chose local options like running unstable branches and building MIMIC locally. There might be a error cause by flair but
+					that shouldn't cause any problems later on.
+				</li>
+				<li>After finishing the setup go to the directory <code>/opt/mycroft/skills</code> on your PC and clone <a href="https://github.com/LeonHermann322/judgealexa-skill">JudgeAlexaSkill</a> and
+					 <a href="https://github.com/LeonHermann322/taskbot-skill">TaskBot Skill</a> into that directory</li>
+				<li>Extract the animal dataset.zip into the task bot folder [WHERE IS THE DATASAET]</li>
+				<li>Go to <a href="https://openai.com/api/">openAI</a> and make an account to get an API KEY</li>
+				<li>create a .env file in the taskbot-skill folder and paste the API key as the <code>OPENAI_API_KEY</code> variable </li>
+				<li>Add the folder /tmp/judge_evidence</li>
+				<li>Now run <code>./start-mycroft.sh debug</code> in the mycroft-core folder and follow the instructions there. (Note that when you run the script for the first time 
+					you have to register your device which might take a while, so just wait a little
+				</li>
+			</ol>
+			<h2>Things to know</h2>
+			<p>If you have successfully setup JudgeAlexa then here are some last things we want you to know</p>
+			<ul>
+				<li>in /tmp/judge_evidence you can find the files that JudgeAlexa recorded</li>
+				<li>if you dont want to solve tasks just adjust your score in the scoreFile.txt in the mycroft-core folder ;)</li>
+				<li>you can find every utterance that got recognized in the <code>mycroft-core/utterances.txt</code></li>
+				<li>in the <code>mycroft-core/sentiments.txt</code> you can find the corresponding sentiment classification</li>
+			  </ul>
 		</div>
 	</section>
 	<section class="container-fluid bg-grey" id="team">
