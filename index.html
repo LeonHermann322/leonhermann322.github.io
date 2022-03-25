@@ -82,7 +82,6 @@
 					</p>
 					<h2>First Skill</h2>	
 					<p>
-					
 						We wanted to evaluate the user and their behavior. Our first step was to recognize insults and decrease the social score of the user.
 						Our idea was to create a skill and invoke it whenever the user utters an insult. With the MyCroft framework we were able to create such
 						skill very easily. Now every time the user uttered an insult after saying "Hey Mycroft!" the users' score got decreased.
@@ -143,7 +142,24 @@
 					</p>
 					<h2>Voice Cloning</h2>
 					<p>
-						
+						To make Judge Alexa more convincing to the user, we wanted to integrate Voice Cloning into our system. From that point on Judge Alexa would
+						record every utterance and save them. We could now use those sound snippets to clone the users voice and vocalize sentences of our choosing.
+						However, we have to mention that the voice cloning model we used was trained on british english, so it doesn't work as well on accented english from non-native speakers.
+						As neural networks work best with GPU-support we first tried to use an external GPU with a Linux laptop, but we soon discovered that using
+						an external GPU is not easy. Because problems with the Thunderbolt-3-connection were blocking us from using the external GPU, we resorted to
+						a built-in GPU instead. For that we had to sacrifice running Judge Alexa on a Raspberry Pi, but we could successfully clone the users voice.
+						In theory Judge Alexa can still be run on micro processors with a powerful built-in GPU like the Nvidia Jetson series, but we didn't have the
+						chance to test it.
+					</p>
+					<p>
+						[Draft]
+						So how did we use the cloned voice in conjunction with our other features? Judge Alexa can react to different actions of the user. For example
+						Judge Alexa tells the user to keep the noise down, if the ambient noise of the surrounding environment passes a certain threshold. To generate and
+						vocalize this request we used the current sentiment, detected from recent utterances, GPT3 and the cloned voice. Depending on the users sentiment
+						we would send different prompts to GPT3 to amplify the users current mood. For instance if the user already is in a bad mood, we would try to make it
+						even worse and vice-versa. The worse the sentiment gets, the more 'heat' we would add to the prompts to GPT3. 'heat' is a parameter to the GPT3-API 
+						and defines how constrained to the prompt (rephrase??????) GPT3 is. Therefore we can unleash GPT3's creative power and achieve a more unpredictable
+						reaction. Lastly we can speak to the user in his own voice to ensure his undivided attention and make Judge Alexas requests more compelling.
 					</p>	
 				</div>
 			</div>
